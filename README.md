@@ -107,6 +107,12 @@ The following things should be noted and adhered to when working on this API:
 
 7. **NEVER** create a function without adding a documentation block for it, especially controller functions, as the doc blocks there are used in the swagger API documentation.
 
+
+## Links
+
+1. Access the Swagger documentation at `{BASE_URL}/api`
+2. You can also get the json version of the Swagger API docs at `BASE_URL/api-json`. This URL can be used to import the entire API into a postman collection
+
 ## Tools Used
 
 - Db migrate
