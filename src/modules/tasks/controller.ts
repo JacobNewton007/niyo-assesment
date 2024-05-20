@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, HttpStatus, Inject, NotFoundException, Param, Patch, Post, Put, Query, Req, Res } from "@nestjs/common";
 import { ApiBearerAuth, ApiBody, ApiCreatedResponse, ApiExtraModels, ApiOkResponse, ApiParam, ApiQuery, ApiTags } from "@nestjs/swagger";
 import { TaskService, TaskServiceImpl } from "./services";
-import { FilterTaskArg, TaskEntity } from "./tasks.type";
+import { TaskEntity } from "./tasks.type";
 import { LoggedInUserType } from "../auth/auth.type";
 import { FilterTaskDto, IdParamDto, TaskDto, UpdateTaskDto } from "./dtos/tasks.dto";
 import { LoggedInUser } from "../auth/decorators/loggin-user.decorator";

@@ -33,7 +33,6 @@ $ yarn
 $ yarn add db-migrate-pg -g 
 - create a database 
 $ psql 
-
 $ CREATE DATABASE niyo_db;
 
 -- to migrate up
@@ -47,6 +46,7 @@ $ yarn seed:up
 
 -- to seed down
 $ yarn seed:down
+```
 
 ```bash
 # development without docker
