@@ -1,0 +1,35 @@
+<! - index.html →
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Real-Time Chat</title>
+ </head>
+ <body>
+  <h1>Real-Time Chat</h1>
+  <div id="chatBox"></div>
+  <input type="text" id="messageInput" placeholder="Type your message">
+  <button onclick="sendMessage()">Send</button>
+  <script>
+   const socket = new WebSocket('ws://localhost:9090/v1');
+   const chatBox = document.getElementById('chatBox');
+   const messageInput = document.getElementById('messageInput');
+   function displayMessage(message) {
+   const newMessage = document.createElement('div');
+   newMessage.textContent = message;
+   chatBox.appendChild(newMessage);
+   }
+   function sendMessage() {
+   const message = messageInput.value;
+   socket.send(message);
+   displayMessage(`You: ${message}`);
+   messageInput.value = '';
+   }
+   socket.addEventListener('message', (event) => {
+   displayMessage(`Friend: ${event.data}`);
+   });
+   socket.addEventListener('open', () => {
+   displayMessage('Connected to the Chat!');
+   });
+  </script>
+ </body>
+</html>
