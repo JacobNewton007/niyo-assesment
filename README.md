@@ -24,6 +24,17 @@
 
 ## Description
 
+
+
+## Tech Stack
+
+- [Nest.js](https://nestjs.com/) as the Node.js framework
+- [Db-migrate](https://db-migrate.readthedocs.io/en/latest/) for database database migration
+- [Pg-Promise](https://github.com/vitaly-t/pg-promise) for database access
+- Swagger for API documentation from Nest.js. See [documentation on nest.js website](https://docs.nestjs.com/openapi/introduction)
+  - Used the nest-cli plugin as well to avoid redundant decorators
+- Compodoc for application code documentation. See [documentation here]
+
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Installation
@@ -33,6 +44,26 @@ $ yarn install
 ```
 
 ## Running the app
+
+```bash
+$ yarn add db-migrate-pg -g 
+
+#Create a database 
+$ psql 
+$ CREATE DATABASE niyo_db;
+
+# migrate up
+$ yarn migrate:up 
+
+# migrate down
+$ yarn migrate:down
+
+# seed up
+$ yarn seed:up
+
+# seed down
+$ yarn seed:down
+```
 
 ```bash
 # development
@@ -58,6 +89,30 @@ $ yarn run test:e2e
 $ yarn run test:cov
 ```
 
+## Architectural Overview
+
+The following things should be noted and adhered to when working on this API:
+
+1. Follow the existing modular structure, and create new modules/sub-modules when it makes sense.
+
+2. **Controllers** are to be "lean" i.e they are primarily for request validation (done by a combination of DTOs and the class-validator package), and routing requests to the appropriate business domain/service classes.
+
+3. **Service** classes should handle all the custom business logic, but should **NEVER** directly interact with the database.
+
+4. **Repository** classes are used to interact with the dataase via
+
+5. **Ensure** you follow a Test driven approach, and at least write E2E tests to validate that the APIs defined in the controllers work as expected.
+
+6. Automatic linting/error checking has been setup when making commits/pushes to the remote repository, **ENSURE** you fix any reported issues before attempting a push.
+
+7. **NEVER** create a function without adding a documentation block for it, especially controller functions, as the doc blocks there are used in the swagger API documentation.
+
+## Tools Used
+
+- Db migrate
+- Pg Promise
+
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
@@ -71,4 +126,3 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
-# nestapisetup
