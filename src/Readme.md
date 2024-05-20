@@ -31,20 +31,21 @@ $ yarn
 
 ```bash
 $ yarn add db-migrate-pg -g 
-- create a database 
+
+#Create a database 
 $ psql 
 $ CREATE DATABASE niyo_db;
 
--- to migrate up
+# migrate up
 $ yarn migrate:up 
 
--- to migrate down
+# migrate down
 $ yarn migrate:down
 
--- to seed up
+# seed up
 $ yarn seed:up
 
--- to seed down
+# seed down
 $ yarn seed:down
 ```
 
